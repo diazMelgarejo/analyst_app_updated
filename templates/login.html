@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AnALiST</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: auto; text-align: center; }
+        button { padding: 0.5rem 1rem; font-size: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to AnALiST</h1>
+        <p>Click continue to access the stock prediction tool.</p>
+        <form method="post" action="{{ url_for('login') }}">
+            <button type="submit">Continue</button>
+        </form>
+    </div>
+</body>
+</html>
