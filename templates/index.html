@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnALiST - Stock Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: auto; }
+        form { margin-top: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; }
+        input[type="text"] { width: 100%; padding: 0.5rem; margin-bottom: 1rem; }
+        button { padding: 0.5rem 1rem; font-size: 1rem; }
+        .error { color: #d00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Another AI Liquidity Stock Trader (AnALiST)</h1>
+        <p>Enter a U.S. stock ticker symbol and a number of days to receive a hypothetical price prediction. This is for educational purposes only and not financial advice.</p>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="post" action="{{ url_for('predict') }}">
+            <label for="ticker">Stock Ticker:</label>
+            <input type="text" id="ticker" name="ticker" value="{{ ticker }}" maxlength="5" pattern="[A-Za-z]{1,5}" required>
+            <label for="days">Days Ahead (1-60):</label>
+            <input type="number" id="days" name="days" value="30" min="1" max="60" required>
+            <button type="submit">Predict</button>
+        </form>
+        <form method="post" action="{{ url_for('logout') }}" style="margin-top: 2rem;">
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+</html>
